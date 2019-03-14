@@ -35,7 +35,7 @@
             <span class="icon-share"></span>
           </span>
 
-          <transition name="puff">
+          <transition name="puff-social">
             <span
               class="social social_vk row align-items-center justify-content-center"
               v-if="showSocial"
@@ -56,7 +56,7 @@
             </span>
           </transition>
 
-          <transition name="puff">
+          <transition name="puff-social">
             <span
               class="social social_twitter row align-items-center justify-content-center"
               v-if="showSocial">
@@ -75,7 +75,7 @@
             </span>
           </transition>
 
-          <transition name="puff">
+          <transition name="puff-social">
             <span
               class="social social_fb row align-items-center justify-content-center"
               v-if="showSocial">

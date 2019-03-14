@@ -166,6 +166,8 @@ export default {
     font-weight: 700
     text-transform: uppercase
     text-align: center
+    -webkit-border-radius: 50px
+    -moz-border-radius: 50px
     border-radius: 50px
     &:focus,
     &.focus
@@ -271,29 +273,99 @@ export default {
       opacity: 0
 
   .puff-enter-active
-    animation: puff-in-center 0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both
+    -webkit-animation: puff-in-center 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both
+    animation: puff-in-center 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both
 
   .puff-leave-active
+    -webkit-animation: puff-out-center 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
+    animation: puff-out-center 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
+
+  // @keyframes puff-in-center
+  //   0%
+  //     transform: scale(2)
+  //     filter: blur(2px)
+  //     opacity: 0
+
+  //   100%
+  //     transform: scale(1)
+  //     filter: blur(0px)
+  //     opacity: 1
+
+  // @keyframes puff-out-center
+  //   0%
+  //     transform: scale(1)
+  //     filter: blur(0px)
+  //     opacity: 1
+  //   100%
+  //     transform: scale(2)
+  //     filter: blur(2px)
+  //     opacity: 0
+
+  .puff-social-enter-active
+    -webkit-animation: puff-in-center 0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both
+    animation: puff-in-center 0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both
+
+  .puff-social-leave-active
+    -webkit-animation: puff-out-center 0.4s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
     animation: puff-out-center 0.4s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
 
-  @keyframes puff-in-center
+  @-webkit-keyframes puff-in-center
     0%
+      -webkit-transform: scale(2)
       transform: scale(2)
+      -webkit-filter: blur(2px)
       filter: blur(2px)
       opacity: 0
 
     100%
+      -webkit-transform: scale(1)
       transform: scale(1)
+      -webkit-filter: blur(0px)
       filter: blur(0px)
       opacity: 1
 
-  @keyframes puff-out-center
+  @keyframes puff-in-center
     0%
+      -webkit-transform: scale(2)
+      transform: scale(2)
+      -webkit-filter: blur(2px)
+      filter: blur(2px)
+      opacity: 0
+
+    100%
+      -webkit-transform: scale(1)
       transform: scale(1)
+      -webkit-filter: blur(0px)
       filter: blur(0px)
       opacity: 1
+
+  @-webkit-keyframes puff-out-center
+    0%
+      -webkit-transform: scale(1)
+      transform: scale(1)
+      -webkit-filter: blur(0px)
+      filter: blur(0px)
+      opacity: 1
+
     100%
+      -webkit-transform: scale(2)
       transform: scale(2)
+      -webkit-filter: blur(2px)
+      filter: blur(2px)
+      opacity: 0
+
+  @keyframes puff-out-center
+    0%
+      -webkit-transform: scale(1)
+      transform: scale(1)
+      -webkit-filter: blur(0px)
+      filter: blur(0px)
+      opacity: 1
+
+    100%
+      -webkit-transform: scale(2)
+      transform: scale(2)
+      -webkit-filter: blur(2px)
       filter: blur(2px)
       opacity: 0
 

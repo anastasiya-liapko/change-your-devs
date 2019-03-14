@@ -1,15 +1,14 @@
 <template>
   <header class="header row justify-content-between align-items-end">
-    <router-link
+    <a
       class="header__logo logo"
-      to="/"
-      tag="a">
+      href="https://alef.im">
       <img
         :src="logoLink"
         alt="Alef development"
         width="109"
         height="35">
-    </router-link>
+    </a>
 
     <app-link
       class="header__link row align-items-center"
