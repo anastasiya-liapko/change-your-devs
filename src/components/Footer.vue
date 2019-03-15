@@ -4,6 +4,7 @@
       class="email"
       :link="'mailto:' + email">
       {{ email }}
+      {{ phone }}
     </app-link>
     <app-link
       class="site"
@@ -25,28 +26,54 @@ import Link from '@/components/Link.vue'
 export default {
   data () {
     return {
-      phone: localStorage.getItem('phone'),
-      email: localStorage.getItem('email'),
-      site: localStorage.getItem('site')
+      // phone: localStorage.getItem('phone'),
+      // email: localStorage.getItem('email'),
+      // site: localStorage.getItem('site')
+      phone: '',
+      email: '',
+      site: ''
     }
   },
   components: {
     'app-link': Link
   },
   created () {
+    console.log('created footer')
     this.fetch()
+    console.log(this.phone)
   },
+  // watch: {
+  //   // при изменениях маршрута запрашиваем данные снова
+  //   '$route': 'fetch'
+  // },
   methods: {
     fetch () {
-      axios.post('post.php', {
-        request: 1
-      })
-        .then(res => {
-          localStorage.setItem('phone', res.data[0].phone)
-          localStorage.setItem('email', res.data[0].email)
-          localStorage.setItem('site', res.data[0].site)
-        })
-        .catch(error => console.log(error))
+      console.log('fetch')
+      var context = this
+
+      // axios.post('post.php', {
+      //   request: 1
+      // })
+      //   .then(res => {
+      //     console.log(res)
+      //     context.email = res.data[0].email
+      //     context.phone = res.data[0].phone
+      //     context.site = res.data[0].site
+      //     console.log(context.phone)
+      //     // localStorage.setItem('phone', res.data[0].phone)
+      //     // localStorage.setItem('email', res.data[0].email)
+      //     // localStorage.setItem('site', res.data[0].site)
+      //     // console.log(localStorage)
+      //   })
+      //   .catch(error => console.log(error))
+      this.$http.post('dist/post.php', {request: 1})
+        .then(response => {
+          console.log('post-ok');
+          console.log(response.data);
+        }, error => {
+          console.log('post-error');
+          console.log(error);
+        });
     }
   }
 }

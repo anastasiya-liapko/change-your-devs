@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <transition name="puff" mode="out-in">
-      <router-view></router-view>
-    </transition>
+      <transition name="puff" mode="out-in">
+        <router-view></router-view>
+      </transition>
   </div>
 </template>
 

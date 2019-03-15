@@ -76,20 +76,22 @@ function getResults($databaseLink)
  * Post result into Tests
  *
  * @param $databaseLink
- * @param $value array of id and date
- * @return array of results
+ * @param $id int
+ * @return boolean
  */
-function postResult($databaseLink)
+function postResult($databaseLink, $id)
 {
-    $sql = "
+    $date = date("ymdHis");
+
+    $sqlId = "
         INSERT INTO
             `tests` (`result_id`, `date`)
         VALUES
-            (?, 11111)
+            (?, $date)
     ";
-    $stmt = mysqli_prepare($databaseLink, $sql);
-    // mysqli_stmt_bind_param($stmt, 'ii', $value['id'], $value['date']);
-    mysqli_stmt_bind_param($stmt, 'i', 1);
+
+    $stmt = mysqli_prepare($databaseLink, $sqlId);
+    mysqli_stmt_bind_param($stmt, 'i', $id);
     $response = mysqli_stmt_execute($stmt);
 
     return $response;

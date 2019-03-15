@@ -1,7 +1,7 @@
-import questions from '@/data/questions'
+// import questions from '@/data/questions'
 
 const state = {
-  questions: questions
+  questions: ''
 }
 
 const mutations = {

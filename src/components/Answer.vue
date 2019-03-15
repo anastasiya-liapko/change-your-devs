@@ -43,7 +43,8 @@ export default {
       id: 0,
       answers: [],
       resultId: '',
-      questions: JSON.parse(localStorage.getItem('change-your-devs-questions'))
+      questions: ''
+      // questions: JSON.parse(localStorage.getItem('change-your-devs-questions'))
     }
   },
   computed: {
@@ -55,7 +56,13 @@ export default {
     }
   },
   created () {
+    console.log('created answer')
     this.fetch()
+  },
+  watch: {
+    '$route' (to, from) {
+      this.fetch()
+    }
   },
   methods: {
     ...mapActions([
@@ -78,36 +85,39 @@ export default {
           }
         })
         this.resultId = quantity >= 3 ? 4 : quantity + 1
-        var result = {
-          id: this.resultId,
-          date: +new Date
-        }
-        console.log(result.date)
-        this.send(result)
+        this.send(this.resultId)
         this.$router.push({ name: 'result', params: { id: this.resultId } })
       }
 
       this.id += 1
     },
     fetch () {
+      console.log('fetch')
+      var context = this
+
       axios.post('post.php', {
         request: 2
       })
         .then(res => {
-          if (res.data !== null) {
-            localStorage.setItem('change-your-devs-questions', JSON.stringify(res.data))
-          }
+          console.log(res)
+          context.questions = res.data
+          console.log(context.questions)
+          // localStorage.setItem('change-your-devs-questions', JSON.stringify(res.data))
         })
         .catch(error => console.log(error))
     },
     send (value) {
       axios.post('post.php', {
-        request: 4
+        request: 4,
+        id: value
       })
         .then(res => {
           console.log(res)
         })
         .catch(error => console.log(error))
+    },
+    setData (value) {
+      this.questions = value
     }
   }
 }
