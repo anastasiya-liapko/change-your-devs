@@ -5,7 +5,7 @@
     </h2>
 
     <div class="count">
-      <span class="count__current">{{ currentQuestion.id + 1 }}</span>
+      <span class="count__current">{{ currentQuestion.id }}</span>
       <span>/</span>
       <span class="count__total">{{ totalQuestions }}</span>
     </div>
@@ -34,27 +34,28 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import axios from 'axios'
+import { mapActions } from 'vuex'
 
 export default {
   data () {
     return {
       id: 0,
       answers: [],
-      resultId: ''
+      resultId: '',
+      questions: JSON.parse(localStorage.getItem('change-your-devs-questions'))
     }
   },
   computed: {
-    ...mapGetters([
-      'questions',
-      'results'
-    ]),
     totalQuestions () {
       return this.questions.length
     },
     currentQuestion () {
       return this.questions[this.id]
     }
+  },
+  created () {
+    this.fetch()
   },
   methods: {
     ...mapActions([
@@ -76,11 +77,37 @@ export default {
             quantity += 1
           }
         })
-        this.resultId = quantity >= 3 ? this.results[3].id + 1 : this.results[quantity].id + 1
+        this.resultId = quantity >= 3 ? 4 : quantity + 1
+        var result = {
+          id: this.resultId,
+          date: +new Date
+        }
+        console.log(result.date)
+        this.send(result)
         this.$router.push({ name: 'result', params: { id: this.resultId } })
       }
 
       this.id += 1
+    },
+    fetch () {
+      axios.post('post.php', {
+        request: 2
+      })
+        .then(res => {
+          if (res.data !== null) {
+            localStorage.setItem('change-your-devs-questions', JSON.stringify(res.data))
+          }
+        })
+        .catch(error => console.log(error))
+    },
+    send (value) {
+      axios.post('post.php', {
+        request: 4
+      })
+        .then(res => {
+          console.log(res)
+        })
+        .catch(error => console.log(error))
     }
   }
 }

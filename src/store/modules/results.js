@@ -7,7 +7,7 @@ const state = {
     showBtn: false
   },
   // resultId: results[0].id,
-  results: results
+  // results: results
 }
 
 const mutations = {
@@ -47,9 +47,9 @@ const getters = {
   // resultId: state => {
   //   return state.resultId
   // },
-  results: state => {
-    return state.results
-  }
+  // results: state => {
+  //   return state.results
+  // }
 }
 
 export default {

@@ -2,7 +2,7 @@
   <header class="header row justify-content-between align-items-end">
     <a
       class="header__logo logo"
-      href="https://alef.im">
+      :href="'https://' + site">
       <img
         :src="logoLink"
         alt="Alef development"
@@ -12,20 +12,42 @@
 
     <app-link
       class="header__link row align-items-center"
-      :link="'tel:84952302268'"
+      :link="'tel:8' + phone"
       :design="'link_bold'">
       <span class="icon-telephone-white"></span>
-      <span>8(495) 230-22-68</span>
+      <span>8{{ phone.split('7').pop() }}</span>
     </app-link>
 
   </header>
 </template>
 
 <script>
+import axios from 'axios'
 import Link from '@/components/Link.vue'
 
 export default {
+  data () {
+    return {
+      phone: localStorage.getItem('phone'),
+      site: localStorage.getItem('site')
+    }
+  },
   props: ['logoLink'],
+  created () {
+    this.fetch()
+  },
+  methods: {
+    fetch () {
+      axios.post('post.php', {
+        request: 1
+      })
+        .then(res => {
+          localStorage.setItem('phone', res.data[0].phone)
+          localStorage.setItem('site', res.data[0].site)
+        })
+        .catch(error => console.log(error))
+    }
+  },
   components: {
     'app-link': Link
   }

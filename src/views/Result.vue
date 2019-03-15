@@ -102,6 +102,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { mapGetters } from 'vuex'
@@ -110,13 +111,14 @@ export default {
   data () {
     return {
       showSocial: false,
-      shareLink: ''
+      // shareLink: '',
+      results: JSON.parse(localStorage.getItem('change-your-devs-results'))
     }
   },
   computed: {
     ...mapGetters([
-      'isFinished',
-      'results'
+      'isFinished'
+      // 'results'
     ]),
     resultId () {
       return parseInt(this.$route.params.id)
@@ -125,8 +127,24 @@ export default {
       return this.isFinished
     }
   },
+  // created () {
+  //   this.shareLink = window.location.href
+  // },
   created () {
-    this.shareLink = window.location.href
+    this.fetch()
+  },
+  methods: {
+    fetch () {
+      axios.post('post.php', {
+        request: 3
+      })
+        .then(res => {
+          if (res.data !== null) {
+            localStorage.setItem('change-your-devs-results', JSON.stringify(res.data))
+          }
+        })
+        .catch(error => console.log(error))
+    }
   },
   components: {
     'app-header': Header,
