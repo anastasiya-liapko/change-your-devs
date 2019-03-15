@@ -7,6 +7,7 @@ import './registerServiceWorker'
 import SocialSharing from 'vue-social-sharing'
 // npm install vue-resource
 import VueResource from 'vue-resource'
+import axios from 'axios'
 
 Vue.use(SocialSharing)
 Vue.use(VueResource)
@@ -15,6 +16,8 @@ Vue.use(VueResource)
 // Vue.http.options.emulateHTTP = true
 
 Vue.config.productionTip = false
+
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
 new Vue({
   router,

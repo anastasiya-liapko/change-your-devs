@@ -3,23 +3,26 @@ date_default_timezone_set('Europe/Moscow');
 include 'config.php';
 include 'functions.php';
 
-$data = json_decode(file_get_contents("php://input"));
-
-if (isset($data)) {
-  $request = $data->request;
-  $id = isset($data->id) ? $data->id : '' ;
-
-  if ($request === 1) {
+switch(intval($_GET['request'])){
+  case 1:
     $response = getContacts($db);
-  } else if ($request === 2) {
+  break;
+  case 2:
     $response = getQuestions($db);
-  } else if ($request === 3) {
+  break;
+  case 3:
     $response = getResults($db);
-  } else if ($request === 4) {
+  break;
+  case 4:
+    $id = intval($_GET['id']);
     $response = postResult($db, $id);
-  }
-
-  echo json_encode($response);
-  exit;
+  break;
 }
+
+header('Access-Control-Allow-Origin:'.$_SERVER['HTTP_ORIGIN']);
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Methods: GET, POST');
+header('content-type: Application/JSON');
+
+die(json_encode($response));
 

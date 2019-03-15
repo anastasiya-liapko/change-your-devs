@@ -28,8 +28,6 @@ import Link from '@/components/Link.vue'
 export default {
   data () {
     return {
-      // phone: localStorage.getItem('phone'),
-      // site: localStorage.getItem('site')
       phone: '',
       site: ''
     }
@@ -39,25 +37,17 @@ export default {
     console.log('created header')
     this.fetch()
   },
-  //  watch: {
-  //   // при изменениях маршрута запрашиваем данные снова
-  //   '$route': 'fetch'
-  // },
   methods: {
     fetch () {
       console.log('fetch')
       var context = this
 
-      axios.post('post.php', {
-        request: 1
-      })
+      axios.get('/post.php?request=1')
         .then(res => {
           console.log(res)
           context.phone = res.data[0].phone
           context.site = res.data[0].site
           console.log(context.site)
-          // localStorage.setItem('phone', res.data[0].phone)
-          // localStorage.setItem('site', res.data[0].site)
         })
         .catch(error => console.log(error))
     }

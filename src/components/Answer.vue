@@ -44,7 +44,6 @@ export default {
       answers: [],
       resultId: '',
       questions: ''
-      // questions: JSON.parse(localStorage.getItem('change-your-devs-questions'))
     }
   },
   computed: {
@@ -95,14 +94,11 @@ export default {
       console.log('fetch')
       var context = this
 
-      axios.post('post.php', {
-        request: 2
-      })
+      axios.get('/post.php?request=2')
         .then(res => {
           console.log(res)
           context.questions = res.data
           console.log(context.questions)
-          // localStorage.setItem('change-your-devs-questions', JSON.stringify(res.data))
         })
         .catch(error => console.log(error))
     },

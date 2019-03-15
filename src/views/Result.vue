@@ -111,15 +111,12 @@ export default {
   data () {
     return {
       showSocial: false,
-      // shareLink: '',
-      // results: JSON.parse(localStorage.getItem('change-your-devs-results'))
       results: ''
     }
   },
   computed: {
     ...mapGetters([
       'isFinished'
-      // 'results'
     ]),
     resultId () {
       return parseInt(this.$route.params.id)
@@ -128,22 +125,6 @@ export default {
       return this.isFinished
     }
   },
-  // beforeRouteEnter (to, from, next) {
-  //   axios.post('post.php', {
-  //     request: 3
-  //   })
-  //     .then(res => {
-  //       if (res.data !== null) {
-  //         localStorage.setItem('change-your-devs-results', JSON.stringify(res.data))
-  //         console.log(localStorage)
-  //       }
-  //     })
-  //     .catch(error => console.log(error))
-  //   next()
-  // },
-  // created () {
-  //   this.shareLink = window.location.href
-  // },
   created () {
     console.log('created result')
     this.fetch()
@@ -153,14 +134,11 @@ export default {
       console.log('fetch')
       var context = this
 
-      axios.post('post.php', {
-        request: 3
-      })
+      axios.get('/post.php?request=3')
         .then(res => {
           console.log(res)
           context.results = res.data
           console.log(context.results)
-          // localStorage.setItem('change-your-devs-results', JSON.stringify(res.data))
         })
         .catch(error => console.log(error))
     }

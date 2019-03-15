@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import questions from './modules/questions'
 import results from './modules/results'
 import indexAnimation from './modules/indexAnimation'
 
@@ -20,7 +19,6 @@ export default new Vuex.Store({
 
   },
   modules: {
-    // questions,
     results,
     indexAnimation
   }
