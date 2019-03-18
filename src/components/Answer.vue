@@ -10,8 +10,8 @@
       <span class="count__total">{{ totalQuestions }}</span>
     </div>
 
-    <h1 class="title">
-        {{ currentQuestion.question }}
+    <h1 class="title" v-html="currentQuestion.question">
+        <!-- {{ currentQuestion.question }} -->
     </h1>
 
     <div class="buttons buttons_answer row justify-content-between">
@@ -27,8 +27,8 @@
       </button>
     </div>
 
-    <p class="text">
-        {{ currentQuestion.comment }}
+    <p class="text text_answer" v-html="currentQuestion.comment">
+        <!-- {{ currentQuestion.comment }} -->
     </p>
   </main>
 </template>
@@ -57,11 +57,6 @@ export default {
   created () {
     console.log('created answer')
     this.fetch()
-  },
-  watch: {
-    '$route' (to, from) {
-      this.fetch()
-    }
   },
   methods: {
     ...mapActions([

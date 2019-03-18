@@ -2,7 +2,7 @@
   <div class="container container_index">
     <app-header :logoLink="'img/logo-black.svg'" @click.native="changeAnimation"></app-header>
 
-    <transition :name="animation" mode="out-in">
+    <transition name="slide-right" mode="out-in">
       <router-view></router-view>
     </transition>
 
@@ -13,22 +13,8 @@
 <script>
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
-import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  computed: {
-    ...mapGetters([
-      'animation'
-    ])
-  },
-  methods: {
-    ...mapActions([
-      'switchAnimation'
-    ]),
-    changeAnimation () {
-      this.switchAnimation('slide-left')
-    }
-  },
   components: {
     'app-header': Header,
     'app-footer': Footer

@@ -38,8 +38,8 @@ export default {
         text-decoration: none
     a:not([href]):hover
       cursor: default
-    .row
-      margin: 0
+  .row
+    margin: 0
 
   .container
     display: flex
@@ -83,9 +83,9 @@ export default {
     &::after
       background-color: #ffffff
     .btn_repeat
-      color: #1875f0
+      color: #ffffff
       &:hover
-        background-color: #1875f0
+        color: #1875f0
 
   .container_result-2
     color: #ffffff
@@ -95,9 +95,9 @@ export default {
     &::after
       background-color: #ffffff
     .btn_repeat
-      color: #21a487
+      color: #ffffff
       &:hover
-        background-color: #21a487
+        color: #21a487
 
   .container_result-3
     color: #ffffff
@@ -107,9 +107,9 @@ export default {
     &::after
       background-color: #ffffff
     .btn_repeat
-      color: #f07f18
+      color: #ffffff
       &:hover
-        background-color: #f07f18
+        color: #f07f18
 
   .container_result-4
     color: #ffffff
@@ -119,9 +119,9 @@ export default {
     &::after
       background-color: #ffffff
     .btn_repeat
-      color: #d22f14
+      color: #ffffff
       &:hover
-        background-color: #d22f14
+        color: #d22f14
 
   .main
     display: flex
@@ -145,8 +145,15 @@ export default {
     width: 864px
     font-family: inherit
     font-size: 16px
-    line-height: 16px
+    line-height: 22px
     font-weight: 400
+    text-align: left
+
+  .text_answer
+    font-family: 'Roboto Slab', serif
+    text-align: center
+
+  .text_result
     text-align: center
 
   .buttons
@@ -182,17 +189,17 @@ export default {
     &:hover
       color: #1875f0
       border: 3px solid #1875f0
-      background-color: #ffffff
+      background-color: transparent
 
   .btn_yes
-    color: #ffffff
-    background-color: #1875f0
+    color: #1875f0
+    background-color: transparent
     border: 3px solid #1875f0
     transition: all 0.5s ease
     &:hover
-      color: #1875f0
+      color: #ffffff
+      background-color: #1875f0
       border: 3px solid #1875f0
-      background-color: #ffffff
 
   .btn_no
     color: #d22f14
@@ -201,19 +208,21 @@ export default {
     transition: all 0.5s ease
     &:hover
       color: #ffffff
-      border: 3px solid #d22f14
       background-color: #d22f14
+      border: 3px solid #d22f14
 
   .btn_repeat
-    color: #1875f0
-    background-color: #ffffff
+    color: #ffffff
+    background-color: transparent
     border: 3px solid #ffffff
     transition: all 0.5s ease
     &:hover
-      color: #ffffff
+      color: #1875f0
+      background-color: #ffffff
       border: 3px solid #ffffff
 
   .btn_share
+    z-index: 1
     position: relative
     margin-left: auto
     padding-top: 19px
@@ -226,50 +235,56 @@ export default {
     &:hover
       color: #ffffff
 
-  .slide-left-enter-active
-    animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
-
-  .slide-left-leave-active
-    animation: slide-out-left 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both
-
-  @keyframes slide-in-right
-    0%
-      transform: translateX(1000px)
-      opacity: 0
-    100%
-      transform: translateX(0)
-      opacity: 1
-
-  @keyframes slide-out-left
-    0%
-      transform: translateX(0)
-      opacity: 1
-    100%
-      transform: translateX(-1000px)
-      opacity: 0
-
   .slide-right-enter-active
+    -webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
     animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
 
   .slide-right-leave-active
-    animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both
+    -webkit-animation: slide-out-left 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both
+    animation: slide-out-left 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both
 
-  @keyframes slide-in-left
+  @-webkit-keyframes slide-in-right
     0%
-      transform: translateX(-1000px)
+      -webkit-transform: translateX(1000px)
+      transform: translateX(1000px)
       opacity: 0
 
     100%
+      -webkit-transform: translateX(0)
       transform: translateX(0)
       opacity: 1
 
-  @keyframes slide-out-right
+  @keyframes slide-in-right
     0%
+      -webkit-transform: translateX(1000px)
+      transform: translateX(1000px)
+      opacity: 0
+
+    100%
+      -webkit-transform: translateX(0)
+      transform: translateX(0)
+      opacity: 1
+
+  @-webkit-keyframes slide-out-left
+    0%
+      -webkit-transform: translateX(0)
       transform: translateX(0)
       opacity: 1
 
     100%
-      transform: translateX(1000px)
+      -webkit-transform: translateX(-1000px)
+      transform: translateX(-1000px)
+      opacity: 0
+
+  @keyframes slide-out-left
+    0%
+      -webkit-transform: translateX(0)
+      transform: translateX(0)
+      opacity: 1
+
+    100%
+      -webkit-transform: translateX(-1000px)
+      transform: translateX(-1000px)
       opacity: 0
 
   .puff-enter-active
@@ -279,27 +294,6 @@ export default {
   .puff-leave-active
     -webkit-animation: puff-out-center 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
     animation: puff-out-center 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
-
-  // @keyframes puff-in-center
-  //   0%
-  //     transform: scale(2)
-  //     filter: blur(2px)
-  //     opacity: 0
-
-  //   100%
-  //     transform: scale(1)
-  //     filter: blur(0px)
-  //     opacity: 1
-
-  // @keyframes puff-out-center
-  //   0%
-  //     transform: scale(1)
-  //     filter: blur(0px)
-  //     opacity: 1
-  //   100%
-  //     transform: scale(2)
-  //     filter: blur(2px)
-  //     opacity: 0
 
   .puff-social-enter-active
     -webkit-animation: puff-in-center 0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both
@@ -368,96 +362,6 @@ export default {
       -webkit-filter: blur(2px)
       filter: blur(2px)
       opacity: 0
-
-  // .puff-left-enter-active
-  //   animation: puff-in-left 0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both
-
-  // .puff-left-leave-active
-  //   animation: puff-out-left 0.4s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
-
-  // @keyframes puff-in-left
-  //   0%
-  //     transform: scale(2)
-  //     transform-origin: 0% 50%
-  //     filter: blur(2px)
-  //     opacity: 0
-  //   100%
-  //     transform: scale(1)
-  //     transform-origin: 0% 50%
-  //     filter: blur(0px)
-  //     opacity: 1
-
-  // @keyframes puff-out-left
-  //   0%
-  //     transform: scale(1)
-  //     transform-origin: 0% 50%
-  //     filter: blur(0px)
-  //     opacity: 1
-
-  //   100%
-  //     transform: scale(2)
-  //     transform-origin: 0% 50%
-  //     filter: blur(2px)
-  //     opacity: 0
-
-  // .puff-right-enter-active
-  //   animation: puff-in-right 0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both
-
-  // .puff-right-leave-active
-  //   animation: puff-out-right 0.4s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
-
-  // @keyframes puff-in-right
-  //   0%
-  //     transform: scale(2)
-  //     transform-origin: 100% 50%
-  //     filter: blur(2px)
-  //     opacity: 0
-
-  //   100%
-  //     transform: scale(1)
-  //     transform-origin: 100% 50%
-  //     filter: blur(0px)
-  //     opacity: 1
-
-  // @keyframes puff-out-right
-  //   0%
-  //     transform: scale(1)
-  //     transform-origin: 100% 50%
-  //     filter: blur(0px)
-  //     opacity: 1
-
-  //   100%
-  //     transform: scale(2)
-  //     transform-origin: 100% 50%
-  //     filter: blur(2px)
-  //     opacity: 0
-
-  // .puff-hor-enter-active
-  //   animation: puff-in-hor 0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both
-
-  // .puff-hor-leave-active
-  //   animation: puff-out-hor 0.6s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
-
-  // @keyframes puff-in-hor
-  //   0%
-  //     transform: scaleX(2)
-  //     filter: blur(2px)
-  //     opacity: 0
-
-  //   100%
-  //     transform: scaleX(1)
-  //     filter: blur(0px)
-  //     opacity: 1
-
-  // @keyframes puff-out-hor
-  //   0%
-  //     transform: scaleX(1)
-  //     filter: blur(0px)
-  //     opacity: 1
-  //   100%
-  //     transform: scaleX(2)
-  //     filter: blur(2px)
-  //     opacity: 02
 
   @media(max-width: 991px)
     .text

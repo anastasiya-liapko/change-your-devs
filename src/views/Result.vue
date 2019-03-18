@@ -10,8 +10,8 @@
       <h1 class="title">
         {{ results[resultId - 1].title }}
       </h1>
-      <p class="text text-center">
-        {{ results[resultId - 1].dsc }}
+      <p class="text text_result" v-html="results[resultId - 1].dsc">
+        <!-- {{ results[resultId - 1].dsc }} -->
       </p>
 
       <div class="buttons buttons_result row flex-column flex-sm-row justify-content-center">
@@ -25,7 +25,7 @@
 
         <button
           v-if="btnData.showBtn"
-          class="btn btn_share position-relatives"
+          class="btn btn_share"
           to="/"
           tag="a"
           @mouseenter="showSocial = true"
