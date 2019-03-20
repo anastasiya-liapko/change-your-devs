@@ -116,7 +116,6 @@ export default {
 
 <style lang="sass">
   .main_answer
-    min-height: 550px
     .subtitle
       margin-top: 35px
       text-align: center
@@ -127,7 +126,6 @@ export default {
       margin-bottom: 67px
     .text
       margin-top: 60px
-      // height: 130px
 
   .subtitle,
   .count
@@ -142,13 +140,4 @@ export default {
       .title
         width: 100%
         height: 130px
-
-  @media(max-width: 767px)
-    .main_answer
-      min-height: 650px
-
-  // @media(max-width: 767px)
-  //   .main_answer
-  //     .text
-  //       height: 320px
 </style>

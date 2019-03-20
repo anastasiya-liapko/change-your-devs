@@ -40,18 +40,12 @@ export default {
 
 <style lang="sass">
   .main_index
-    min-height: 550px
     .title
       width: 505px
       margin-top: 15px
       margin-bottom: 48px
     .btn
       margin-top: 48px
-
-  @media(max-width: 767px)
-    .main_index
-      min-height: 650px
-      padding-top: 20px
 
   @media(max-width: 575px)
     .main_index

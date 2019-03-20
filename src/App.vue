@@ -49,6 +49,7 @@ export default {
     height: auto
     padding-left: 45px
     padding-right: 45px
+    transition: all 0.5s ease
 
   .container
     position: relative
@@ -152,6 +153,8 @@ export default {
   .text_answer
     font-family: 'Roboto Slab', serif
     text-align: center
+    height: 200px
+    transition: all 0.5s ease
 
   .text_result
     text-align: center
@@ -373,6 +376,9 @@ export default {
       padding-right: 15px
       background-position: center
 
+    .text_answer
+      height: 200px
+
   @media(max-width: 600px)
     .buttons_answer
       width: 100%
@@ -388,14 +394,23 @@ export default {
         &:first-child
           margin-bottom: 15px
 
+    .text
+      text-align: justify
+
+    .text_answer
+      height: 230px
+
   @media(max-width: 575px)
     .title
       font-size: 20px
-    .text
-      text-align: justify
+
     .btn
       width: 100%
+
     .btn_index
       font-size: 14px
+
+    .text_answer
+      height: 450px
 
 </style>
