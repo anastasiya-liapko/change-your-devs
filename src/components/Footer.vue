@@ -34,12 +34,10 @@ export default {
     'app-link': Link
   },
   created () {
-    console.log('created footer')
     this.fetch()
   },
   methods: {
     fetch () {
-      console.log('fetch')
       var context = this
 
       axios.get('/post.php?request=1')
@@ -48,7 +46,6 @@ export default {
           context.email = res.data[0].email
           context.phone = res.data[0].phone
           context.site = res.data[0].site
-          console.log(context.phone)
         })
         .catch(error => console.log(error))
     }

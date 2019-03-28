@@ -5,6 +5,7 @@ import store from './store/store'
 import './registerServiceWorker'
 // npm install vue-social-sharing
 import SocialSharing from 'vue-social-sharing'
+
 import axios from 'axios'
 
 Vue.use(SocialSharing)
@@ -18,4 +19,3 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
-

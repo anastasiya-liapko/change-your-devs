@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?gxwbrg');
-  src:  url('../fonts/icomoon.eot?gxwbrg#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?gxwbrg') format('truetype'),
-    url('../fonts/icomoon.woff?gxwbrg') format('woff'),
-    url('../fonts/icomoon.svg?gxwbrg#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?tk56qm');
+  src:  url('../fonts/icomoon.eot?tk56qm#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?tk56qm') format('truetype'),
+    url('../fonts/icomoon.woff?tk56qm') format('woff'),
+    url('../fonts/icomoon.svg?tk56qm#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -32,6 +32,14 @@
 }
 .icon-vk:before {
   content: "\e902";
+}
+.icon-curved-arrow-with-broken-line:before {
+  content: "\e905";
+  color: #fff;
+}
+.icon-turn-right-arrow-with-broken-line:before {
+  content: "\e906";
+  color: #fff;
 }
 .icon-share:before {
   content: "\e903";

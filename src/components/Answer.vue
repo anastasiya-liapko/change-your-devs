@@ -55,7 +55,6 @@ export default {
     }
   },
   created () {
-    console.log('created answer')
     this.fetch()
   },
   methods: {
@@ -86,14 +85,12 @@ export default {
       this.id += 1
     },
     fetch () {
-      console.log('fetch')
       var context = this
 
       axios.get('/post.php?request=2')
         .then(res => {
           console.log(res)
           context.questions = res.data
-          console.log(context.questions)
         })
         .catch(error => console.log(error))
     },

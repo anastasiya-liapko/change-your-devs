@@ -19,6 +19,7 @@ export default {
 
   #app
     min-width: 320px
+    // height: 1385px
     height: 100%
     margin: 0 auto
     font-family: 'Montserrat', sans-serif
@@ -27,6 +28,7 @@ export default {
     font-size: 16px
     line-height: normal
     font-weight: 400
+    overflow-x: hidden
     img
       width: 100%
       height: auto
@@ -44,7 +46,7 @@ export default {
   .container
     display: flex
     flex-direction: column
-    max-width: 1440px
+    max-width: 100%
     min-height: 100%
     height: auto
     padding-left: 45px
@@ -123,6 +125,11 @@ export default {
       color: #ffffff
       &:hover
         color: #d22f14
+
+  .header,
+  .footer
+    width: 1349px
+    margin: 0 auto
 
   .main
     display: flex
@@ -295,8 +302,8 @@ export default {
     animation: puff-in-center 0.1s cubic-bezier(0.470, 0.000, 0.745, 0.715) both
 
   .puff-leave-active
-    -webkit-animation: puff-out-center 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
-    animation: puff-out-center 0.3s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
+    -webkit-animation: puff-out-center 0.15s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
+    animation: puff-out-center 0.15s cubic-bezier(0.165, 0.840, 0.440, 1.000) both
 
   .puff-social-enter-active
     -webkit-animation: puff-in-center 0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both
@@ -310,61 +317,66 @@ export default {
     0%
       -webkit-transform: scale(2)
       transform: scale(2)
-      -webkit-filter: blur(2px)
-      filter: blur(2px)
+      // -webkit-filter: blur(2px)
+      // filter: blur(2px)
       opacity: 0
 
     100%
       -webkit-transform: scale(1)
       transform: scale(1)
-      -webkit-filter: blur(0px)
-      filter: blur(0px)
+      // -webkit-filter: blur(0px)
+      // filter: blur(0px)
       opacity: 1
 
   @keyframes puff-in-center
     0%
       -webkit-transform: scale(2)
       transform: scale(2)
-      -webkit-filter: blur(2px)
-      filter: blur(2px)
+      // -webkit-filter: blur(2px)
+      // filter: blur(2px)
       opacity: 0
 
     100%
       -webkit-transform: scale(1)
       transform: scale(1)
-      -webkit-filter: blur(0px)
-      filter: blur(0px)
+      // -webkit-filter: blur(0px)
+      // filter: blur(0px)
       opacity: 1
 
   @-webkit-keyframes puff-out-center
     0%
       -webkit-transform: scale(1)
       transform: scale(1)
-      -webkit-filter: blur(0px)
-      filter: blur(0px)
+      // -webkit-filter: blur(0px)
+      // filter: blur(0px)
       opacity: 1
 
     100%
       -webkit-transform: scale(2)
       transform: scale(2)
-      -webkit-filter: blur(2px)
-      filter: blur(2px)
+      // -webkit-filter: blur(2px)
+      // filter: blur(2px)
       opacity: 0
 
   @keyframes puff-out-center
     0%
       -webkit-transform: scale(1)
       transform: scale(1)
-      -webkit-filter: blur(0px)
-      filter: blur(0px)
+      // -webkit-filter: blur(0px)
+      // filter: blur(0px)
       opacity: 1
 
     100%
       -webkit-transform: scale(2)
       transform: scale(2)
-      -webkit-filter: blur(2px)
-      filter: blur(2px)
+      // -webkit-filter: blur(2px)
+      // filter: blur(2px)
       opacity: 0
+
+  @media(max-width: 1439px)
+    .header,
+    .footer
+      width: 100%
 
   @media(max-width: 991px)
     .text
@@ -377,7 +389,7 @@ export default {
       background-position: center
 
     .text_answer
-      height: 200px
+      height: 270px
 
   @media(max-width: 600px)
     .buttons_answer
@@ -397,9 +409,6 @@ export default {
     .text
       text-align: justify
 
-    .text_answer
-      height: 230px
-
   @media(max-width: 575px)
     .title
       font-size: 20px
@@ -410,6 +419,14 @@ export default {
     .btn_index
       font-size: 14px
 
+    .text_answer
+      height: 300px
+
+  @media(max-width: 475px)
+    .text_answer
+      height: 420px
+
+  @media(max-width: 374px)
     .text_answer
       height: 450px
 

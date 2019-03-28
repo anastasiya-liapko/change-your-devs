@@ -7,12 +7,26 @@
         <img :src="results[resultId - 1].img" alt="" width="192" height="192">
       </div>
 
+      <div
+        v-if="!btnData.showBtn"
+        class="arrow arrow_1">
+        <p class="arrow__text">Я проверил свою команду программистов. Вот результат теста.</p>
+        <span class="icon icon-curved-arrow-with-broken-line"></span>
+      </div>
+
       <h1 class="title">
         {{ results[resultId - 1].title }}
       </h1>
       <p class="text text_result" v-html="results[resultId - 1].dsc">
         <!-- {{ results[resultId - 1].dsc }} -->
       </p>
+
+      <div
+        v-if="!btnData.showBtn"
+        class="arrow arrow_2">
+        <p class="arrow__text">Если у вас есть команда пограммистов, жмите на кнопку</p>
+        <span class="icon icon-turn-right-arrow-with-broken-line"></span>
+      </div>
 
       <div class="buttons buttons_result row flex-column flex-sm-row justify-content-center">
         <router-link
@@ -42,7 +56,7 @@
               @click="showSocial = !showSocial">
               <social-sharing
                 class="social_link"
-                :url="shareLink"
+                :url="results[resultId - 1].link"
                 inline-template>
                 <div>
                   <network
@@ -52,7 +66,6 @@
                   </network>
                 </div>
               </social-sharing>
-
             </span>
           </transition>
 
@@ -60,9 +73,10 @@
             <span
               class="social social_twitter row align-items-center justify-content-center"
               v-if="showSocial">
+              <!-- <a class="social_network row justify-content-center align-items-center" :href="'https://twitter.com/intent/tweet?text=' + twitter" target="_blank" rel="noopener noreferrer"><span class="icon icon-twitter"></span></a> -->
               <social-sharing
                 class="social_link"
-                :url="shareLink"
+                :url="results[resultId - 1].link"
                 inline-template>
                 <div>
                   <network
@@ -81,7 +95,7 @@
               v-if="showSocial">
               <social-sharing
                 class="social_link"
-                :url="shareLink"
+                :url="results[resultId - 1].link"
                 inline-template>
                 <div>
                   <network
@@ -123,22 +137,22 @@ export default {
     },
     btnData () {
       return this.isFinished
+    },
+    twitter () {
+      return 'ТЕСТ. ПРОВЕРЬТЕ ВАШУ IT-КОМАНДУ, ДАЖЕ ЕСЛИ ВЫ НЕ ПРОГРАММИСТ ' + this.results[this.resultId - 1].link
     }
   },
   created () {
-    console.log('created result')
     this.fetch()
   },
   methods: {
     fetch () {
-      console.log('fetch')
       var context = this
 
       axios.get('/post.php?request=3')
         .then(res => {
           console.log(res)
           context.results = res.data
-          console.log(context.results)
         })
         .catch(error => console.log(error))
     }
@@ -152,6 +166,8 @@ export default {
 
 <style lang="sass">
   .container_result
+    .main
+      position: relative
     .title,
     .text,
     .link
@@ -161,6 +177,38 @@ export default {
     .text
       margin-top: 36px
       margin-bottom: 46px
+
+  .arrow
+    position: absolute
+  .arrow__text
+    font-family: inherit
+    font-size: 20px
+    line-height: 20px
+    font-weight: 700
+    color: #ffffff
+  .arrow_1
+    top: 30px
+    left: 50%
+    width: 290px
+    margin-left: -500px
+    text-align: right
+    .arrow__text
+      text-align: right
+  .arrow_2
+    top: 330px
+    right: 50%
+    width: 370px
+    margin-right: -750px
+    .arrow__text
+      text-align: left
+
+  .icon-curved-arrow-with-broken-line
+    margin-right: -80px
+    font-size: 130px
+
+  .icon-turn-right-arrow-with-broken-line
+    margin-left: -100px
+    font-size: 40px
 
   .avatar
     width: 192px
@@ -197,4 +245,91 @@ export default {
   .social_fb
     left: 67%
     background-color: #3c5a99
+
+  @media(max-width: 1599px)
+    .arrow_2
+      margin-right: -650px
+
+    .icon-turn-right-arrow-with-broken-line
+      margin-left: 0px
+
+  @media(max-width: 1439px)
+    .arrow_2
+      position: relative
+      top: 0
+      right: 0
+      display: flex
+      width: 510px
+      height: 160px
+      margin-right: 0
+      margin-left: -250px
+
+    .icon-turn-right-arrow-with-broken-line
+      transform: rotate(-90deg)
+
+  @media(max-width: 1199px)
+    .arrow_1
+      position: relative
+      top: 0
+      left: 0
+      display: flex
+      width: 420px
+      margin-left: 0
+      margin-right: -450px
+      text-align: left
+      .arrow__text
+        order: 2
+
+    .icon-curved-arrow-with-broken-line
+      order: 1
+      margin-right: 0
+      transform: rotate(90deg)
+
+  @media(max-width: 991px)
+    .arrow_1
+      flex-direction: column
+      align-items: center
+      width: 290px
+      margin-right: 0
+      .arrow__text
+        order: 1
+        text-align: center
+
+    .icon-curved-arrow-with-broken-line
+      order: 2
+      margin-top: 50px
+      transform: rotate(30deg)
+      transform-origin: 130px
+
+    .arrow_2
+      margin-left: 0
+
+    @media(max-width: 575px)
+      .container_result
+        .text
+          margin-bottom: 0
+        .buttons
+          margin-top: 45px
+
+      .arrow_1
+        width: 100%
+        .arrow__text
+          width: 290px
+          font-size: 16px
+
+      .arrow_2
+        width: 100%
+        .arrow__text
+          align-self: center
+          width: 370px
+          font-size: 16px
+
+      .icon-curved-arrow-with-broken-line
+        font-size: 100px
+
+      .icon-turn-right-arrow-with-broken-line
+        width: 40px
+        font-size: 25px
+        transform-origin: 70px
+
 </style>

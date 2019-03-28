@@ -34,12 +34,10 @@ export default {
   },
   props: ['logoLink'],
   created () {
-    console.log('created header')
     this.fetch()
   },
   methods: {
     fetch () {
-      console.log('fetch')
       var context = this
 
       axios.get('/post.php?request=1')
@@ -47,7 +45,6 @@ export default {
           console.log(res)
           context.phone = res.data[0].phone
           context.site = res.data[0].site
-          console.log(context.site)
         })
         .catch(error => console.log(error))
     }

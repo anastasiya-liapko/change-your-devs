@@ -42,7 +42,7 @@ export default {
   .main_index
     .title
       width: 505px
-      margin-top: 15px
+      margin-top: 35px
       margin-bottom: 48px
     .btn
       margin-top: 48px
