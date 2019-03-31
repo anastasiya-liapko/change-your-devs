@@ -18,9 +18,11 @@ export default {
     margin: 0
 
   #app
+    // position: relative
+    display: flex
+    flex-direction: column
     min-width: 320px
-    // height: 1385px
-    height: 100%
+    min-height: 100%
     margin: 0 auto
     font-family: 'Montserrat', sans-serif
     -webkit-font-smoothing: antialiased
@@ -44,8 +46,11 @@ export default {
     margin: 0
 
   .container
+    // position: absolute
+    flex-grow: 1
     display: flex
     flex-direction: column
+    justify-content: stretch
     max-width: 100%
     min-height: 100%
     height: auto
@@ -207,6 +212,8 @@ export default {
     border: 3px solid #1875f0
     transition: all 0.5s ease
     &:hover
+      color: #1875f0
+    &.hover
       color: #ffffff
       background-color: #1875f0
       border: 3px solid #1875f0
@@ -217,6 +224,8 @@ export default {
     border: 3px solid #d22f14
     transition: all 0.5s ease
     &:hover
+      color: #d22f14
+    &.hover
       color: #ffffff
       background-color: #d22f14
       border: 3px solid #d22f14
@@ -317,60 +326,44 @@ export default {
     0%
       -webkit-transform: scale(2)
       transform: scale(2)
-      // -webkit-filter: blur(2px)
-      // filter: blur(2px)
       opacity: 0
 
     100%
       -webkit-transform: scale(1)
       transform: scale(1)
-      // -webkit-filter: blur(0px)
-      // filter: blur(0px)
       opacity: 1
 
   @keyframes puff-in-center
     0%
       -webkit-transform: scale(2)
       transform: scale(2)
-      // -webkit-filter: blur(2px)
-      // filter: blur(2px)
       opacity: 0
 
     100%
       -webkit-transform: scale(1)
       transform: scale(1)
-      // -webkit-filter: blur(0px)
-      // filter: blur(0px)
       opacity: 1
 
   @-webkit-keyframes puff-out-center
     0%
       -webkit-transform: scale(1)
       transform: scale(1)
-      // -webkit-filter: blur(0px)
-      // filter: blur(0px)
       opacity: 1
 
     100%
       -webkit-transform: scale(2)
       transform: scale(2)
-      // -webkit-filter: blur(2px)
-      // filter: blur(2px)
       opacity: 0
 
   @keyframes puff-out-center
     0%
       -webkit-transform: scale(1)
       transform: scale(1)
-      // -webkit-filter: blur(0px)
-      // filter: blur(0px)
       opacity: 1
 
     100%
       -webkit-transform: scale(2)
       transform: scale(2)
-      // -webkit-filter: blur(2px)
-      // filter: blur(2px)
       opacity: 0
 
   @media(max-width: 1439px)

@@ -12,7 +12,7 @@
     </app-link>
     <app-link
       class="phone"
-      :link="'tel:8' + phone">
+      :link="'tel:' + phoneCall">
       8{{ phone.split('7').pop() }}
     </app-link>
   </footer>
@@ -28,6 +28,14 @@ export default {
       phone: '',
       email: '',
       site: ''
+    }
+  },
+  computed: {
+    phoneCall () {
+      var firstPart = this.phone.split('(').pop().split(')').shift()
+      var secondPart = this.phone.split(')').pop()
+      var thirdPart = secondPart.split(' ').pop().split('-')
+      return 8 + firstPart + thirdPart[0] + thirdPart[1] + thirdPart[2]
     }
   },
   components: {

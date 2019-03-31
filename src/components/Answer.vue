@@ -17,12 +17,18 @@
     <div class="buttons buttons_answer row justify-content-between">
       <button
         class="btn btn_yes"
-        @click="getAnswer(1)">
+        :class="{'hover': yes}"
+        @click="getAnswer(1)"
+        @mouseover="yes=true"
+        @mouseleave="yes=false">
         Да
       </button>
       <button
         class="btn btn_no"
-        @click="getAnswer(0)">
+        :class="{'hover': no}"
+        @click="getAnswer(0)"
+        @mouseover="no=true"
+        @mouseleave="no=false">
         Нет
       </button>
     </div>
@@ -40,6 +46,9 @@ import { mapActions } from 'vuex'
 export default {
   data () {
     return {
+      yes: false,
+      no: false,
+      device: '',
       id: 0,
       answers: [],
       resultId: '',
@@ -56,12 +65,35 @@ export default {
   },
   created () {
     this.fetch()
+    this.checkDevice()
+    window.addEventListener('resize', this.checkDevice)
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.checkDevice)
   },
   methods: {
     ...mapActions([
       'setFinished'
     ]),
+    checkDevice () {
+      this.device = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)
+    },
     getAnswer (value) {
+      var context = this
+      if (value && this.device) {
+        this.yes = true
+
+        setTimeout(function () {
+          context.yes = false
+        }, 200)
+      } else if (!value && this.device) {
+        this.no = true
+
+        setTimeout(function () {
+          context.no = false
+        }, 200)
+      }
+
       var answer = {
         id: this.id,
         answer: value
@@ -72,6 +104,7 @@ export default {
         this.setFinished('true')
         // quantity of 'no' answers
         var quantity = 0
+
         this.answers.forEach(function (elem, i) {
           if (elem.answer === 0) {
             quantity += 1

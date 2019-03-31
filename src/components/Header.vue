@@ -1,5 +1,5 @@
 <template>
-  <header class="header row justify-content-between align-items-end">
+  <header class="header row justify-content-between slign-items-center align-items-sm-end">
     <a
       class="header__logo logo"
       :href="'https://' + site">
@@ -12,7 +12,7 @@
 
     <app-link
       class="header__link row align-items-center"
-      :link="'tel:8' + phone"
+      :link="'tel:' + phoneCall"
       :design="'link_bold'">
       <span class="icon-telephone-white"></span>
       <span>8{{ phone.split('7').pop() }}</span>
@@ -33,6 +33,14 @@ export default {
     }
   },
   props: ['logoLink'],
+  computed: {
+    phoneCall () {
+      var firstPart = this.phone.split('(').pop().split(')').shift()
+      var secondPart = this.phone.split(')').pop()
+      var thirdPart = secondPart.split(' ').pop().split('-')
+      return 8 + firstPart + thirdPart[0] + thirdPart[1] + thirdPart[2]
+    }
+  },
   created () {
     this.fetch()
   },

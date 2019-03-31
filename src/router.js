@@ -7,6 +7,21 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+  // scrollBehavior: (to, from, savedPosition) => new Promise((resolve) => {
+  //   const position = savedPosition || {}
+  //   if (!savedPosition) {
+  //     if (to.hash) {
+  //       position.selector = to.hash
+  //     }
+  //     if (to.matched.some((m) => m.meta.scrollToTop)) {
+  //       position.x = 0
+  //       position.y = 0
+  //     }
+  //   }
+  //   Router.app.$root.$once('triggerScroll', () => {
+  //     Router.app.$nextTick(() => resolve(position))
+  //   })
+  // }),
   routes: [
     {
       path: '/',
@@ -37,5 +52,14 @@ export default new Router({
       path: '*',
       redirect: '/'
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
+    if (to.hash) {
+      return { selector: to.hash }
+    }
+    return { x: 0, y: 0 }
+  }
 })

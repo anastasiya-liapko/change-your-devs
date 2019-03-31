@@ -2,9 +2,9 @@
   <div class="container container_index">
     <app-header :logoLink="'img/logo-black.svg'" @click.native="changeAnimation"></app-header>
 
-    <transition name="slide-right" mode="out-in">
+    <!-- <transition name="slide-right" mode="out-in"> -->
       <router-view></router-view>
-    </transition>
+    <!-- </transition> -->
 
     <app-footer></app-footer>
   </div>
@@ -34,7 +34,7 @@ export default {
 
   @media(max-width: 991px)
     .container_index
-      height: 860px
+      height: 910px
 
   @media(max-width: 767px)
     .container_index
