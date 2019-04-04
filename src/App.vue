@@ -16,6 +16,7 @@ export default {
   body
     height: 100%
     margin: 0
+    transition: all 3s both
 
   #app
     // position: relative

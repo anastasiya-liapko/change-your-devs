@@ -33,6 +33,7 @@
           class="btn btn_repeat"
           :class="{'btn_repeat-long': !btnData.showBtn}"
           :to="btnData.btnUrl"
+          @click.native="scrollTo"
           tag="a">
           {{ btnData.btnContent }}
         </router-link>
@@ -120,6 +121,7 @@ import axios from 'axios'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { mapGetters } from 'vuex'
+import { scrollMixin } from '@/scrollMixin.js'
 
 export default {
   data () {
@@ -146,6 +148,13 @@ export default {
     this.fetch()
   },
   methods: {
+    scrollTo () {
+      this.scroll(0)
+      // window.scrollTo({
+      //     top: 0,
+      //     behavior: "smooth"
+      // })
+    },
     fetch () {
       var context = this
 
@@ -157,6 +166,7 @@ export default {
         .catch(error => console.log(error))
     }
   },
+  mixins: [scrollMixin],
   components: {
     'app-header': Header,
     'app-footer': Footer

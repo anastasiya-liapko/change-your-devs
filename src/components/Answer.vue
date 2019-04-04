@@ -42,6 +42,7 @@
 <script>
 import axios from 'axios'
 import { mapActions } from 'vuex'
+import { scrollMixin } from '@/scrollMixin.js'
 
 export default {
   data () {
@@ -79,6 +80,11 @@ export default {
       this.device = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)
     },
     getAnswer (value) {
+      this.scroll(0)
+      // window.scrollTo({
+      //     top: 0,
+      //     behavior: "smooth"
+      // })
       var context = this
       if (value && this.device) {
         this.yes = true
@@ -140,7 +146,8 @@ export default {
     setData (value) {
       this.questions = value
     }
-  }
+  },
+  mixins: [scrollMixin]
 }
 </script>
 

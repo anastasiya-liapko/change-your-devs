@@ -25,6 +25,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { scrollMixin } from '@/scrollMixin.js'
 
 export default {
   methods: {
@@ -32,9 +33,11 @@ export default {
       'switchAnimation'
     ]),
     changeAnimation () {
-      this.switchAnimation('slide-right')
+      this.scroll(0)
+      // this.switchAnimation('slide-right')
     }
-  }
+  },
+  mixins: [scrollMixin]
 }
 </script>
 
