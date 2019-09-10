@@ -1,0 +1,30 @@
+questions
+{
+  id - int
+  question - text
+  comment - text
+  orderby - int
+  yes - int
+  no - int
+}
+results
+{
+  id - int
+  img - varchar(1000)
+  title - varchar(255)
+  dsc - text
+  link - varchar(255)
+}
+contacts
+{
+  id - int
+  phone - varchar(255)
+  email - varchar(255)
+  site - varchar(255)
+}
+tests
+{
+  id - int
+  date - timestamp
+  result_id - int -> results(id)
+}
